@@ -1,30 +1,14 @@
 """
 doc
 """
-from flask import request
+from flask_restful import Api
+from flask_restful.utils import cors
 
 from . import app
-from .service.auth import check_user
+from monitor.resource.user import Hello
 
 
-@app.route('/adduser', methods=['POST'])
-def add_user():
-    pass
+api = Api(app)
+api.decorators = [cors.crossdomain(origin='*')]
 
-
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    error = None
-    name = request.args.get('name', '')
-    passwd = request.args.get('passwd', '')
-    if check_user(name, passwd):
-        return error
-
-
-@app.route('/')
-def hello():
-    """
-    test
-    """
-    return 'hello'
-
+api.add_resource(Hello, '/hello')

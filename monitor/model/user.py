@@ -9,14 +9,14 @@ class User(db.Model):
     title = db.Column(db.String, nullable=False)
     text = db.Column(db.String, nullable=False)
 
-    def __init__(self, id, title=None, text=None):
-        self.id = id
-        self.title = title
-        self.text = text
+    def __init__(self, name=None, passwd=None):
+        self.title = name
+        self.text = passwd
 
     def save(self):
         db.session.add(self)
         db.session.commit()
+        print('save')
         return self
 
     def update(self):
