@@ -11,6 +11,7 @@ from flask_restful import Resource
 from flask_restful import reqparse
 
 from monitor.service.auth import add_user
+from monitor.service.auth import add_account
 
 
 class Hello(Resource):
@@ -30,7 +31,7 @@ class Hello(Resource):
         name = args.get('name', '')
         passwd = args.get('passwd', '')
         print(name, passwd)
-        add_user(name, passwd)
+        add_account(name, passwd)
 
 
 if __name__ == "__main__":

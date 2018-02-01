@@ -1,9 +1,16 @@
 from monitor.model.user import User
+from monitor.model.account import Account
 
 
 def add_user(name=None, passwd=None):
     if name and passwd:
-        user = User(name, passwd)
+        user = Account(name, passwd)
+        user.save()
+
+
+def add_account(name=None, passwd=None):
+    if name and passwd:
+        user = Account(name, passwd)
         user.save()
 
 
